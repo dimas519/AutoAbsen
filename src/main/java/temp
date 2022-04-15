@@ -1,0 +1,14 @@
+//        switch (os.getOS()){
+//            case WINDOWS -> {
+//                System.setProperty("webdriver.chrome.driver", args[0]);
+//                break;
+//            }
+//            case MAC_OS -> {
+//                System.setProperty("webdriver.chrome.driver", args[1]);
+//                break;
+//            }
+//            case LINUX -> {
+//                System.setProperty("webdriver.chrome.driver", args[2]);
+//                break;
+//            }
+//        }
