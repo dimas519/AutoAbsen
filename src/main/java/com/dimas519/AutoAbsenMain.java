@@ -7,13 +7,9 @@ import com.dimas519.Tools.Sleep;
 import com.dimas519.Tools.Waktu;
 import com.dimas519.Website.WebsiteStupor;
 import com.dimas519.lib.DriverSetting;
-
 import org.openqa.selenium.WebDriver;
-
-import java.sql.*;
-import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 import java.time.LocalTime;
 
 
@@ -39,11 +35,19 @@ public class AutoAbsenMain {
         DBModel dbModel= new DBModel(args[3],args[4],args[5],args[6],args[7]);
 
         Database db=new Database(dbModel);
-        WebDriver driver=DriverSetting.setup("");
+        WebDriver driver=DriverSetting.setup(args[2]);
 
         Kuliah next;
 
+        WebsiteStupor stupor=new WebsiteStupor(driver);
+        stupor.doAbsen(user);
+
+
+
         while (true){
+            if(true){
+                break;
+            }
             int hari=Waktu.getDate();
             String jamSekarang= Waktu.getTimeNow();
 
@@ -55,27 +59,22 @@ public class AutoAbsenMain {
             Long durasiWait = timeBerikutnya - jamSekarangFormat;
 
             Sleep.Sleep(durasiWait);
-
             //debug
             System.out.println(next.getMata_Kuliah()+" "+LocalDate.now()+" "+LocalTime.now());
             System.out.println();
 
-            if(next.getisLecture()){
-//                WebsiteStupor stupor=new WebsiteStupor(driver);
-//                stupor.doAbsen(user);
-            }else{
-
+            //loop keatas lagi
+            if(timeBerikutnya==Waktu.MIDNIGHT){
+                continue;
             }
-            System.out.println(LocalTime.MAX);
 
+            //absen
+            if(next.getisLecture()){
 
-
-
-
-
-
-
-
+            }else{
+//              WebsiteStupor stupor=new WebsiteStupor(driver);
+//              stupor.doAbsen(user);
+            }
         }
 //
 //

@@ -21,8 +21,6 @@ dependencies {
     implementation 'mysql:mysql-connector-java:5.1.6'
 
 
-    implementation 'org.apache.commons:commons-lang3:3.+'
-
 
 }
 
