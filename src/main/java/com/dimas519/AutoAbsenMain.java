@@ -35,7 +35,7 @@ public class AutoAbsenMain {
 
         Database db=new Database(dbModel);
         Kuliah next;
-
+        int i;
 
         while (true){
             int hari=Waktu.getDate();
@@ -52,7 +52,6 @@ public class AutoAbsenMain {
             Sleep.Sleep(durasiWait);
             //debug
             System.out.println(next.getMata_Kuliah()+" "+LocalDate.now()+" "+LocalTime.now());
-            System.out.println();
 
             //loop keatas lagi
             if(timeBerikutnya==Waktu.MIDNIGHT){
@@ -61,14 +60,24 @@ public class AutoAbsenMain {
             }
 
             //absen
+            boolean absen=false;//belum absen
+            i=1;
             if(next.getisLecture()){
-
+                while (!absen){
+                    absen=!absen;
+                }
             }else{
-                boolean absen=true;
-                while(absen) {
-                    WebDriver driver=DriverSetting.setup(args[2]);
-                    WebsiteStupor stupor=new WebsiteStupor(driver);
+                while(!absen) {
+                 //   WebDriver driver=DriverSetting.setup(args[2]);
+                  //  WebsiteStupor stupor=new WebsiteStupor(driver);
                   //  absen=stupor.doAbsen(user);
+                    absen=!absen;
+                    if(absen){
+                        System.out.println(next.getMata_Kuliah()+" "+Waktu.getTimeNow()+" done");
+                    }else{
+                        System.out.println(next.getMata_Kuliah()+" "+Waktu.getTimeNow()+" failed "+i);
+                        i++;
+                    }
                 }
             }
             Sleep.Sleep(1l);

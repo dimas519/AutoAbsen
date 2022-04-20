@@ -27,11 +27,11 @@ public class WebsiteStupor extends SSO {
 
         }catch (Exception e){
             System.out.println("TimeOut");
-            return true; //suruh ulang
+            return false; //suruh ulang
         }finally {
             this.driver.close();
         }
-        return false;
+        return true;
     }
 
 
