@@ -24,30 +24,20 @@ import java.time.LocalTime;
 //args 4 for username db
 //args 5 for password db
 //args 6 for db name
-//args 7 for table name
+
 
 
 public class AutoAbsenMain {
     public static void main(String[] args){
-
         //init init
         User user=new User(args[0],args[1]);
-        DBModel dbModel= new DBModel(args[3],args[4],args[5],args[6],args[7]);
+        DBModel dbModel= new DBModel(args[3],args[4],args[5],args[6]);
 
         Database db=new Database(dbModel);
-        WebDriver driver=DriverSetting.setup(args[2]);
-
         Kuliah next;
-
-        WebsiteStupor stupor=new WebsiteStupor(driver);
-        stupor.doAbsen(user);
-
 
 
         while (true){
-            if(true){
-                break;
-            }
             int hari=Waktu.getDate();
             String jamSekarang= Waktu.getTimeNow();
 
@@ -56,7 +46,8 @@ public class AutoAbsenMain {
             Long timeBerikutnya=next.getJam();
 
             Long jamSekarangFormat = Waktu.getTime(jamSekarang);
-            Long durasiWait = timeBerikutnya - jamSekarangFormat;
+            Long durasiWait = (timeBerikutnya - jamSekarangFormat)+1;
+
 
             Sleep.Sleep(durasiWait);
             //debug
@@ -65,6 +56,7 @@ public class AutoAbsenMain {
 
             //loop keatas lagi
             if(timeBerikutnya==Waktu.MIDNIGHT){
+                Sleep.Sleep(1l);
                 continue;
             }
 
@@ -72,19 +64,15 @@ public class AutoAbsenMain {
             if(next.getisLecture()){
 
             }else{
-//              WebsiteStupor stupor=new WebsiteStupor(driver);
-//              stupor.doAbsen(user);
+                boolean absen=true;
+                while(absen) {
+                    WebDriver driver=DriverSetting.setup(args[2]);
+                    WebsiteStupor stupor=new WebsiteStupor(driver);
+                  //  absen=stupor.doAbsen(user);
+                }
             }
+            Sleep.Sleep(1l);
+
         }
-//
-//
-//
-//
-//
-//
-
-
-
-
     }
 }

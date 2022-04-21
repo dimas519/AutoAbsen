@@ -5,10 +5,10 @@ public class DBModel {
     private String port;
     private String Username;
     private String password;
-    private String tableName;
 
 
-    public DBModel( String port, String username, String password,String dataBaseName,String tableName) {
+
+    public DBModel( String port, String username, String password,String dataBaseName) {
         this.dataBaseName = dataBaseName;
         this.port = port;
         this.Username = username;
@@ -17,7 +17,7 @@ public class DBModel {
         }else{
             this.password="";
         }
-        this.tableName=tableName;
+
     }
 
     public String getDataBaseName() {
@@ -36,7 +36,4 @@ public class DBModel {
         return password;
     }
 
-    public String getTableName() {
-        return tableName;
-    }
 }

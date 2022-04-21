@@ -48,7 +48,7 @@ public class Database {
             Kuliah next=new Kuliah(hari,matkul,waktuKuliah,role);
             return next;
         } catch (SQLException e) {
-            Kuliah none=new Kuliah(-1,"End of Days",Waktu.MIDNIGHT,false);
+            Kuliah none=new Kuliah(-1,"End of Day",Waktu.MIDNIGHT,false);
             return none;
         }
 

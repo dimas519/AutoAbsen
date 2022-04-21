@@ -12,21 +12,26 @@ public class WebsiteStupor extends SSO {
 
     public WebsiteStupor(WebDriver driver){
         this.driver=driver;
-        this.driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
+        this.driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
     }
 
     public boolean doAbsen(User user){
         try {
             this.driver.get(this.url);
             super.login(this.driver,user);
-            // this.driver.get(this.url+"jadwal");
+            this.driver.get(this.url+"jadwal");
+
+
+
+
+
         }catch (Exception e){
             System.out.println("TimeOut");
-            return false;
+            return true; //suruh ulang
         }finally {
             this.driver.close();
         }
-        return true;
+        return false;
     }
 
 
