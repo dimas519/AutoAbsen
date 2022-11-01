@@ -11,29 +11,33 @@ import java.time.Duration;
 import java.util.Random;
 
 public class SSO {
-    public void login(WebDriver driver, User user) throws InterruptedException {
+
+
+
+
+
+    public static void login(WebDriver driver, User user) throws InterruptedException {
+
+
         Random random=new Random();
-
-
-        Thread.sleep(random.nextLong(500,3000));
         WebElement loginButton=driver.findElement(By.id("login-button"));
         loginButton.click();
 
-        Thread.sleep(random.nextLong(500,3000));
+    //    Thread.sleep(random.nextLong(500,3000));
         WebElement usernameForm=driver.findElement(By.id("username"));
         usernameForm.sendKeys(user.getEmail());
 
-        Thread.sleep(random.nextLong(500,3000));
+    //    Thread.sleep(random.nextLong(500,3000));
         WebElement nextLogin=driver.findElement(By.id("next_login"));
         nextLogin.click();
 
-        Thread.sleep(random.nextLong(500,3000));
+    //    Thread.sleep(random.nextLong(500,3000));
         WebElement password =driver.findElement(By.id("password"));
-        WebDriverWait wait=new WebDriverWait(driver, Duration.ofMillis(500));
+        WebDriverWait wait=new WebDriverWait(driver, Duration.ofMillis(2000));
         wait.until(ExpectedConditions.visibilityOf(password));
         password.sendKeys(user.getPassword());
 
-        Thread.sleep(random.nextLong(500,3000));
+       // Thread.sleep(random.nextLong(500,3000));
         WebElement login=driver.findElement(By.id("fm1"));
         login.submit();
     }

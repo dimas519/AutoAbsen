@@ -5,7 +5,7 @@ public class Sleep {
         try {
             Thread.sleep(detik*1000);
         } catch (InterruptedException e) {
-            System.out.println("fail sleep");
+            Tray.printError("Failed Sleep:"+e.getMessage());
         }
     }
 }

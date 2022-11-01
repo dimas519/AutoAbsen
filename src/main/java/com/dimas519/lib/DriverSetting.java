@@ -14,30 +14,34 @@ import org.openqa.selenium.safari.SafariOptions;
 
 
 public class DriverSetting {
-    public static WebDriver setup(String something){
+    public static WebDriver setup(String something, String headless){
+        boolean  headlessBool=Boolean.parseBoolean(headless);
+
         switch (something){
             case "Chrome":
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions optionsC =new ChromeOptions();
-               // optionsC.addArguments("headless");
+                if(headlessBool) optionsC.addArguments("headless","--window-size=1920,1080");
+                optionsC.addArguments("--start-maximized");
                 ChromeDriver driverC=new ChromeDriver(optionsC);
                 return driverC;
             case "Firefox" :
                 WebDriverManager.firefoxdriver().setup();
                 FirefoxOptions  optionsF =new FirefoxOptions();
-              //  optionsF.addArguments("headless");
+                if(headlessBool) optionsF.addArguments("headless");
                 FirefoxDriver driverF=new FirefoxDriver(optionsF);
+                driverF.manage().window().maximize();
                 return driverF;
             case "Edge" :
                 WebDriverManager.edgedriver().setup();
                 EdgeOptions optionsE =new EdgeOptions();
-               // optionsE.addArguments("headless");
+                if(headlessBool) optionsE.addArguments("headless");
+                optionsE.addArguments("--start-maximized");
                 EdgeDriver driverE=new EdgeDriver(optionsE);
                 return driverE;
             case "Safari" :
                 WebDriverManager.safaridriver().setup();
                 SafariOptions optionsS=new SafariOptions();
-
                 SafariDriver driverS=new SafariDriver(optionsS);
                 return driverS;
             default:

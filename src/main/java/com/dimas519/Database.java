@@ -2,9 +2,8 @@ package com.dimas519;
 
 import com.dimas519.Model.DBModel;
 import com.dimas519.Model.Kuliah;
+import com.dimas519.Tools.Tray;
 import com.dimas519.Tools.Waktu;
-import org.checkerframework.checker.units.qual.K;
-
 import java.sql.*;
 
 
@@ -23,7 +22,7 @@ public class Database {
                     "jdbc:mysql://localhost:"+this.models.getPort()+"/"+this.models.getDataBaseName(),
                     this.models.getUsername(),this.models.getPassword());
         } catch (SQLException e) {
-            System.out.println("fail connect db");
+            Tray.printError("fail connect db");
         }
     }
     public Kuliah getNextTime(int hari, String jam){

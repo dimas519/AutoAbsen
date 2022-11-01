@@ -27,7 +27,7 @@ public class Kuliah {
         return jam;
     }
 
-    public Boolean getisLecture() {
+    public Boolean getIsLecture() {
         return isLecture;
     }
 }

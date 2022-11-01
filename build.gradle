@@ -2,6 +2,14 @@ plugins {
     id 'java'
 }
 
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.dimas519.AutoAbsenMain'
+        )
+    }
+}
+
 group 'com.dimas519'
 version '1.0-SNAPSHOT'
 
@@ -10,15 +18,15 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-
     //auto navigate
     implementation 'org.seleniumhq.selenium:selenium-java:4.+'
-    implementation 'io.github.bonigarcia:webdrivermanager:5.1.1'
+    implementation 'io.github.bonigarcia:webdrivermanager:5.+'
 
     //database
     implementation 'mysql:mysql-connector-java:5.1.6'
+
+    //screen shot
+    implementation 'ru.yandex.qatools.ashot:ashot:1.5.4'
 
 
 
