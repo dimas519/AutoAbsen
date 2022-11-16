@@ -28,7 +28,7 @@ public class Database {
     public Kuliah getNextTime(int hari, String jam){
         String query="SELECT * FROM kuliah";
         query+=" WHERE fkHari = "+hari;
-        query+=" AND Waktu >= '"+jam+"'";
+        query+=" AND Waktu > '"+jam+"'";
         query+=" LIMIT 1";
         Kuliah next=_getNextTime(query);
         return  next;

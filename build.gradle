@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    //auto navigate
+    //auto navigate (selenium & webdriver)
     implementation 'org.seleniumhq.selenium:selenium-java:4.+'
     implementation 'io.github.bonigarcia:webdrivermanager:5.+'
 
