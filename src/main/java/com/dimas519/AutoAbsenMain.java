@@ -84,6 +84,7 @@ public class AutoAbsenMain  implements MainInterface {
                     System.out.println("try :"+i+" absen status:"+absen);
                     if (i < 101) {
                         if (absen) {
+                            Sleep.Sleep(2L);
                             ScreenShot.getScreenShoot(driver, next, args[7]);
                         } else {
                             Tray.printWarning(next.getMata_Kuliah() + " failed " + i);
@@ -93,9 +94,9 @@ public class AutoAbsenMain  implements MainInterface {
                         Tray.printError("ERROR ABSEN, ABSEN MANUAL");
                         break;
                     }
-                    Sleep.Sleep(2l);
+                    Sleep.Sleep(2L);
                 }
-                Sleep.Sleep(2l);
+                Sleep.Sleep(2L);
             }
         }
     }
