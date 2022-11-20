@@ -19,10 +19,10 @@ public class WebsiteStupor   implements WebsiteUnpar {
         this.user=user;
         this.driver=driver;
         this.driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
-        boolean login=true;
-        do{
-             login=this.doLogin();
-        }while (login);
+
+        this.driver.get(this.url+"jadwal/");
+        this.doLogin();
+
     }
 
     public boolean doLogin(){

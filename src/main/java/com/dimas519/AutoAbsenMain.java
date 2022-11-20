@@ -54,6 +54,7 @@ public class AutoAbsenMain  implements MainInterface {
 
         Tray.printInfo("Modul AutoAbsen started");
         while (true){
+            System.out.println("Loop 1");
             int hari=Waktu.getNumDate();
             String jamSekarang= Waktu.getTimeNow();
 
@@ -70,8 +71,9 @@ public class AutoAbsenMain  implements MainInterface {
             Long jamSekarangFormat = Waktu.getTime(jamSekarang);
             Long durasiWait = (timeBerikutnya - jamSekarangFormat)+5;
 
-
+            System.out.println("durasi wait: "+durasiWait+" jam matkul: "+timeBerikutnya);
             Sleep.Sleep(durasiWait);
+
             //debug
             Tray.printNone(next.getMata_Kuliah()+" "+LocalDate.now()+" "+LocalTime.now());
             //loop keatas lagi
@@ -80,6 +82,7 @@ public class AutoAbsenMain  implements MainInterface {
                 boolean absen = false;//belum absen
                 i = 1;
                 while (!absen) {
+                    System.out.println("loop 2");
                     absen = web.doAbsen(next);
                     System.out.println("try :"+i+" absen status:"+absen);
                     if (i < 101) {
