@@ -18,7 +18,7 @@ public class Logging {
             writer.println("["+Waktu.getTimeNow()+"]"+x);
             writer.close();
         } catch (IOException e) {
-            Tray.printError("Error write:"+e.getMessage());
+            Tray.printError("Error write:"+e.getMessage(),null); //exception di null karena tidak akan tertulis di txt, biar muncul di notif
         }
     }
 }

@@ -54,7 +54,7 @@ public class AutoAbsenMain  implements MainInterface {
 
         Tray.printInfo("Modul AutoAbsen started");
         while (true){
-            System.out.println("Loop 1");
+            Tray.printNone("Loop service "+Waktu.getTimeNow());
             int hari=Waktu.getNumDate();
             String jamSekarang= Waktu.getTimeNow();
 
@@ -71,35 +71,34 @@ public class AutoAbsenMain  implements MainInterface {
             Long jamSekarangFormat = Waktu.getTime(jamSekarang);
             Long durasiWait = (timeBerikutnya - jamSekarangFormat)+5;
 
-            System.out.println("durasi wait: "+durasiWait+" jam matkul: "+timeBerikutnya);
+            Tray.printNone("durasi wait: "+Waktu.convertNormalTime(durasiWait)+" jam matkul: "+Waktu.convertNormalTime(timeBerikutnya));
             Sleep.Sleep(durasiWait);
-
-            //debug
-            Tray.printNone(next.getMata_Kuliah()+" "+LocalDate.now()+" "+LocalTime.now());
             //loop keatas lagi
             if(timeBerikutnya!=Waktu.MIDNIGHT) {
                 //absen
                 boolean absen = false;//belum absen
                 i = 1;
                 while (!absen) {
-                    System.out.println("loop 2");
                     absen = web.doAbsen(next);
-                    System.out.println("try :"+i+" absen status:"+absen);
                     if (i < 101) {
                         if (absen) {
                             Sleep.Sleep(2L);
                             ScreenShot.getScreenShoot(driver, next, args[7]);
+                            Tray.printInfo(next.getMata_Kuliah()+" done");
                         } else {
                             Tray.printWarning(next.getMata_Kuliah() + " failed " + i);
                             i++;
                         }
                     } else {
-                        Tray.printError("ERROR ABSEN, ABSEN MANUAL");
+                        Tray.printError("ERROR ABSEN, ABSEN MANUAL",null);
                         break;
                     }
                     Sleep.Sleep(2L);
                 }
                 Sleep.Sleep(2L);
+            }else{
+                Tray.printNoIcon("------------------------------------------------------------");
+                Tray.printNoIcon(Waktu.getDate()+" - "+Waktu.getTimeNow() );
             }
         }
     }
@@ -113,7 +112,7 @@ public class AutoAbsenMain  implements MainInterface {
             System.exit(0);
             Tray.printInfo("Exit");
         }catch (Exception e){
-            Tray.printError("failed close");
+            Tray.printError("failed close",e);
         }
     }
 }

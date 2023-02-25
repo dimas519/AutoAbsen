@@ -44,13 +44,26 @@ public class Tray {
         }
     }
 
+    public static void printNoIcon(String text){
+        log.write(text);
+        trayIcon.displayMessage("Auto Absen", text, TrayIcon.MessageType.INFO );
+    }
+
+
     public static void printInfo(String text){
         log.write("info: "+text);
         trayIcon.displayMessage("Auto Absen", text, TrayIcon.MessageType.INFO );
     }
 
-    public static void printError(String text){
-        log.write("ERROR: "+text);
+    public static void printError(String text, Exception exception){
+        if(exception !=null){
+            log.write("ERROR: "+text+" without  exception msg");
+        }else{
+            log.write("ERROR: "+text+" with exception: "+exception.getMessage());
+        }
+
+
+
         trayIcon.displayMessage("Auto Absen", text, TrayIcon.MessageType.ERROR );
     }
 

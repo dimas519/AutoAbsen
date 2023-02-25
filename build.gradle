@@ -28,6 +28,8 @@ dependencies {
     //screen shot
     implementation 'ru.yandex.qatools.ashot:ashot:1.5.4'
 
+    //ntp
+    implementation group: 'commons-net', name: 'commons-net', version: '3.8.0'
 
 
 }

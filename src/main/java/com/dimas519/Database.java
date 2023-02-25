@@ -22,7 +22,7 @@ public class Database {
                     "jdbc:mysql://localhost:"+this.models.getPort()+"/"+this.models.getDataBaseName(),
                     this.models.getUsername(),this.models.getPassword());
         } catch (SQLException e) {
-            Tray.printError("fail connect db");
+            Tray.printError("fail connect db",e);
         }
     }
     public Kuliah getNextTime(int hari, String jam){
@@ -31,7 +31,9 @@ public class Database {
         query+=" AND Waktu > '"+jam+"'";
         query+=" LIMIT 1";
         Kuliah next=_getNextTime(query);
+        System.out.println(query);
         return  next;
+
     }
 
     private Kuliah _getNextTime(String query){

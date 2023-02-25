@@ -16,7 +16,7 @@ public class ScreenShot {
             File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(scrFile, new File(namaFile+".jpg"));
         } catch (IOException e) {
-            Tray.printError("Error Screen-Shot:"+e.getMessage());
+            Tray.printError("Error Screen-Shot",e);
         }
     }
 }
